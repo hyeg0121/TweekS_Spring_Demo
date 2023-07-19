@@ -9,12 +9,16 @@ import java.util.Optional;
 
 // 서비스 클래스는 비즈니스에 의존적으로 기획
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemoryMemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     // 회원 가입
     public long join(Member member){
         validateDuplicateMember(member);
-
+        memberRepository.save(member);
         return member.getId();
     }
 
