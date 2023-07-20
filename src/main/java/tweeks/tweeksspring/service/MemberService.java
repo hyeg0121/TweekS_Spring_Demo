@@ -1,5 +1,7 @@
 package tweeks.tweeksspring.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import tweeks.tweeksspring.domain.Member;
 import tweeks.tweeksspring.repository.MemberRepository;
 import tweeks.tweeksspring.repository.MemoryMemberRepository;
@@ -8,9 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 // 서비스 클래스는 비즈니스에 의존적으로 기획
+@Service
 public class MemberService {
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemoryMemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
